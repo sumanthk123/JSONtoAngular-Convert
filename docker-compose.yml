@@ -1,0 +1,29 @@
+version: '3.8'
+services:
+  app:
+    build: . 
+    ports:
+      - 4200:4200
+      # - 3000:3000
+    depends_on:
+      postgres:
+        condition: service_healthy
+    # volumes:
+    #   - ./:/usr/src/app/
+    #   - /usr/src/app/node_modules
+  postgres:
+    image: postgres:14.1-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=dockerete
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./database-creation.sql:/docker-entrypoint-initdb.d/db/database-creation.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
