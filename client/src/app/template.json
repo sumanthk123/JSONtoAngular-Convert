@@ -1,0 +1,15 @@
+[
+    {
+      "type": "text",
+      "label": "Name",
+      "name": "name",
+      "value": "",
+      "validations": [
+        {
+          "name": "required",
+          "validator": "required",
+          "message": "Name is required"
+        }
+      ]
+    }
+]

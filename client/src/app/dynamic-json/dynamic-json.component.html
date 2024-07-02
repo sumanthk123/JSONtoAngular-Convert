@@ -1,0 +1,7 @@
+<form [formGroup]="dynamicForm" (ngSubmit)="onSubmit()">
+    <div *ngFor="let element of formStructure">
+      <label>{{element.label}}</label>
+      <input [type]="element.type" [formControlName]="element.name">
+    </div>
+    <button type="submit">Submit</button>
+  </form>
