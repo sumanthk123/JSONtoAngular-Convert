@@ -1,7 +1,47 @@
 <form [formGroup]="dynamicForm" (ngSubmit)="onSubmit()">
     <div *ngFor="let element of formStructure">
-      <label>{{element.label}}</label>
-      <input [type]="element.type" [formControlName]="element.name">
+        <div *ngIf="['text'].includes(element.type)">
+            <label>{{element.name}}</label>
+            <input [type]="element.type" [formControlName]="element.label">
+        </div>
+        <div *ngIf="['select'].includes(element.type)">
+            <label>{{element.name}}</label>
+            <select [formControlName]="element.label">
+                <option *ngFor="let option of element.options" [value]="option.value">
+                    {{option.label}}
+                </option>
+            </select>
+        </div>
+        <div *ngIf="['radio'].includes(element.type)">
+            <label>{{element.name}}</label>
+            <div *ngFor="let option of element.options">
+                <input type="radio" 
+                [name]="element.label"
+                (change)="onChange($event)"
+                [formControlName]="element.label" 
+                [value]="option.label" 
+                id="radioElement">
+                <label for="radioElement">
+                    {{option.label}}
+                </label>
+            </div>
+        </div>
+        <div *ngIf="['checkbox'].includes(element.type)">
+            <label>{{element.name}}</label>
+            <div *ngFor="let option of element.options">
+                <input type="checkbox"
+                
+                [name]="option.label"
+                [value]="option.value"
+                [checked]="option.checked"
+                (change)="onChange($event)" 
+                [formArrayName]="element.label" 
+                [id]="element.label">
+                <label for="element.label">
+                    {{option.label}}
+                </label>
+            </div>
+        </div>
     </div>
     <button type="submit">Submit</button>
   </form>

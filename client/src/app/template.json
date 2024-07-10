@@ -1,8 +1,8 @@
 [
     {
       "type": "text",
-      "label": "Name",
-      "name": "name",
+      "label": "name",
+      "name": "Name",
       "value": "",
       "validations": [
         {
@@ -11,5 +11,39 @@
           "message": "Name is required"
         }
       ]
+    },
+    {
+        "type": "select",
+        "label": "IceCream",
+        "name": "What is your favorite Ice Cream?",
+        "value": "default",
+        "options": [
+            {"label": "Vanilla", "value": 0},
+            {"label": "Chocolate", "value": 1},
+            {"label": "Strawberry", "value": 2}
+        ]
+    },
+    {
+        "type": "radio", 
+        "label": "Pet",
+        "name": "Which one is your pet?",
+        "value": "default", 
+        "options": [
+            {"label": "Rocky", "value": 0},
+            {"label": "Toby", "value": 1},
+            {"label": "Benji", "value": 2}
+        ]
+    },
+    {
+        "type": "checkbox", 
+        "label": "Pet2",
+        "name": "Which one is your pet?",
+        "id": "checkBoxElement",
+        "value": "default", 
+        "options": [
+            {"label": "Rocky", "value": 0, "checked": false},
+            {"label": "Toby", "value": 1, "checked": false},
+            {"label": "Benji", "value": 2, "checked": false}
+        ]
     }
 ]

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import {formStructure} from "../dynamic-json/extension.js"
 
 @Component({
@@ -9,7 +9,7 @@ import {formStructure} from "../dynamic-json/extension.js"
 })
 export class DynamicJsonComponent implements OnInit {
 
-  dynamicForm = this.formBuilder.group({});;
+  dynamicForm: FormGroup = this.formBuilder.group({});;
   formStructure = formStructure;
 
   constructor(private formBuilder : FormBuilder) { }
@@ -17,12 +17,33 @@ export class DynamicJsonComponent implements OnInit {
   ngOnInit() {
     let formGroup = {};
     this.formStructure.forEach(element => {
-      formGroup[element.name] = [element.value || ''];
+      let val;
+      if (element.type == 'checkbox') {
+        const val = this.formBuilder.array(
+          element.options.map(() => this.formBuilder.control(false))
+        );
+        formGroup[element.label] = val;
+      } else {
+        val = element.value;
+        formGroup[element.label] = val;
+      }
+
     });
     this.dynamicForm = this.formBuilder.group(formGroup);
   }
   onSubmit() {
+    // console.log(event);
     console.log(this.dynamicForm.value);
+  }
+  onChange(event) {
+    if (event.target.type == "radio") {
+      console.log(event.target.value);
+      // return event.target.value;
+    }
+    if (event.target.type == "checkbox") {
+      console.log(event.target);
+      this.dynamicForm.get(event.target.id).value[event.target.value] = event.target.checked
+    }
   }
 
 }
