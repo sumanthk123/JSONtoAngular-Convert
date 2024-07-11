@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormsModule, FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import {formStructure} from "../dynamic-json/extension.js"
+
 
 @Component({
   selector: 'app-dynamic-json',
   templateUrl: './dynamic-json.component.html',
-  styleUrls: ['./dynamic-json.component.css']
+  styleUrls: ['./dynamic-json.component.css'],
 })
 export class DynamicJsonComponent implements OnInit {
 
@@ -35,14 +36,18 @@ export class DynamicJsonComponent implements OnInit {
     // console.log(event);
     console.log(this.dynamicForm.value);
   }
-  onChange(event) {
-    if (event.target.type == "radio") {
-      console.log(event.target.value);
+  onChange(event, type, elabel, checkedval) {
+    console.log( event.source)
+    if (type == "radio") {
+      console.log(event.value);
       // return event.target.value;
     }
-    if (event.target.type == "checkbox") {
-      console.log(event.target);
-      this.dynamicForm.get(event.target.id).value[event.target.value] = event.target.checked
+    if (type == "checkbox") {
+      console.log(checkedval);
+      console.log(event.checked);
+      this.dynamicForm.get(elabel).value[event.source.value] = event.source.checked;
+      console.log(event.checked);
+      return event.checked;
     }
   }
 

@@ -1,0 +1,54 @@
+body {
+    background-color: #7091E6;
+}
+
+.center-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    /* box-shadow: 1px 1px 1px 1px lightgray; */
+}
+
+.card-properties {
+    width: 75%;
+    height: 75%;
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px !important; */
+
+}
+
+.container {
+    padding: 0px;
+    
+    /* text-align: center; */
+    /* flex-wrap: wrap row; */
+}
+
+.textfield {
+    padding-bottom: 20px;
+}
+
+.selectbox {
+    padding-bottom: 20px;
+}
+
+.my-checkbox {
+    padding-top: 20px;
+}
+
+
+.radio-button-attributes {
+    margin: 5px;
+  }
+
+.submit-button {
+    height: 50%;
+    width: 50%;
+    margin: 20px;
+    background-color: #7091E6;
+    color: white;
+}
