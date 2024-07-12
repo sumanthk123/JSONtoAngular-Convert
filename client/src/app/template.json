@@ -1,21 +1,12 @@
 [
-    {
-      "type": "text",
-      "label": "firstname",
-      "name": "First Name",
-      "value": "",
-      "validations": [
-        {
-          "name": "required",
-          "validator": "required",
-          "message": "Name is required"
-        }
-      ]
-    },
-    {
+  {
+    "name": "Group1",
+    "layout": "Group",
+    "components": [
+      {
         "type": "text",
-        "label": "lastname",
-        "name": "Last Name",
+        "label": "firstname",
+        "name": "First Name",
         "value": "",
         "validations": [
           {
@@ -24,39 +15,54 @@
             "message": "Name is required"
           }
         ]
-    },
-    {
-        "type": "select",
-        "label": "IceCream",
-        "name": "What is your favorite Ice Cream?",
-        "value": "default",
-        "options": [
-            {"label": "Vanilla", "value": 0},
-            {"label": "Chocolate", "value": 1},
-            {"label": "Strawberry", "value": 2}
-        ]
-    },
-    {
-        "type": "radio", 
-        "label": "Pet",
-        "name": "Which one is your pet?",
-        "value": "default", 
-        "options": [
-            {"label": "Rocky", "value": 0},
-            {"label": "Toby", "value": 1},
-            {"label": "Benji", "value": 2}
-        ]
-    },
-    {
-        "type": "checkbox", 
-        "label": "Pet2",
-        "name": "Which one is your car?",
-        "id": "checkBoxElement",
-        "value": "default", 
-        "options": [
-            {"label": "BMW", "value": 0, "checked": false},
-            {"label": "Ford", "value": 1, "checked": false},
-            {"label": "Mercedes", "value": 2, "checked": false}
-        ]
-    }
+      },
+      {
+          "type": "text",
+          "label": "lastname",
+          "name": "Last Name",
+          "value": "",
+          "validations": [
+            {
+              "name": "required",
+              "validator": "required",
+              "message": "Name is required"
+            }
+          ]
+      },
+      {
+          "type": "select",
+          "label": "IceCream",
+          "name": "What is your favorite Ice Cream?",
+          "value": "default",
+          "options": [
+              {"label": "Vanilla", "value": 0},
+              {"label": "Chocolate", "value": 1},
+              {"label": "Strawberry", "value": 2}
+          ]
+      },
+      {
+          "type": "radio", 
+          "label": "Pet",
+          "name": "Which one is your pet?",
+          "value": "default", 
+          "options": [
+              {"label": "Rocky", "value": 0},
+              {"label": "Toby", "value": 1},
+              {"label": "Benji", "value": 2}
+          ]
+      },
+      {
+          "type": "checkbox", 
+          "label": "Pet2",
+          "name": "Which one is your car?",
+          "id": "checkBoxElement",
+          "value": "default", 
+          "options": [
+              {"label": "BMW", "value": 0, "checked": false},
+              {"label": "Ford", "value": 1, "checked": false},
+              {"label": "Mercedes", "value": 2, "checked": false}
+          ]
+      }
+    ]
+  }
 ]

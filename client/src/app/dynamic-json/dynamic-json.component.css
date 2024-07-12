@@ -11,9 +11,18 @@ body {
     /* box-shadow: 1px 1px 1px 1px lightgray; */
 }
 
+.form-content-properties {
+    display: flex;
+    flex-direction: row; 
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
 .card-properties {
-    width: 75%;
-    height: 75%;
+    width: 90%;
+    height: 90%;
+
     display: flex;
     align-items:center;
     justify-content: center;
@@ -26,6 +35,10 @@ body {
     
     /* text-align: center; */
     /* flex-wrap: wrap row; */
+}
+
+.spacing {
+    padding: 20px;
 }
 
 .textfield {

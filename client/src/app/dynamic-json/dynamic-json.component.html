@@ -6,75 +6,75 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="center-container">
-        <mat-card appearance="outlined" class="card-properties mat-elevation-z8">
-            <mat-card-content>
-                <div class="container">
-                    <form [formGroup]="dynamicForm" (ngSubmit)="onSubmit()">
-                        <div *ngFor="let element of formStructure">
-                            <div *ngIf="['text'].includes(element.type)">
-                                <div class="textfield">
-                                <mat-form-field>
-                                    <mat-label>{{element.name}} </mat-label>
-                                    <input matInput [type]="element.type" [formControlName]="element.label">
-                                </mat-form-field>
+    <div *ngFor="let group of formStructure" [formGroup]="dynamicForm">
+        <div class="center-container">
+            <mat-card appearance="outlined" class="card-properties mat-elevation-z8" >
+                <mat-card-content>
+                        <form (ngSubmit)="onSubmit()" class="form-content-properties">
+                            <div *ngFor="let element of group.components" [formGroupName]="group.name">
+                                <div *ngIf="['text'].includes(element.type)">
+                                    <div class="spacing">
+                                    <mat-form-field>
+                                        <mat-label>{{element.name}} </mat-label>
+                                        <input matInput [type]="element.type" [formControlName]="element.label">
+                                    </mat-form-field>
+                                    </div>
                                 </div>
-                            </div>
-                            <div *ngIf="['select'].includes(element.type)">
-                                <div class="selectbox">
-                                <mat-form-field>
-                                    <mat-label>{{element.name}} </mat-label>
-                                    <mat-select [formControlName]="element.label">
-                                        <mat-option *ngFor="let option of element.options" [value]="option.value">
+                                <div *ngIf="['select'].includes(element.type)">
+                                    <div class="spacing">
+                                    <mat-form-field>
+                                        <mat-label>{{element.name}} </mat-label>
+                                        <mat-select [formControlName]="element.label">
+                                            <mat-option *ngFor="let option of element.options" [value]="option.value">
+                                                {{option.label}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                </div>
+                                <div *ngIf="['radio'].includes(element.type)">
+                                    <div class="spacing">
+                                        <label id="radio-label">{{element.name}} </label>
+                                        <mat-radio-group aria-labelledby="radio-label">
+                                            <div *ngFor="let option of element.options">
+                                                <mat-radio-button
+                                                ngDefaultControl
+                                                class="radio-button-attributes"
+                                                [name]="element.label"
+                                                (change)="onChange($event, element.type)"
+                                                [formControlName]="element.label" 
+                                                [value]="option.label" 
+                                                >
+                                                {{option.label}}
+                                                </mat-radio-button>
+                                            </div>
+                                        </mat-radio-group>
+                                    </div>
+                                </div>
+                                <div *ngIf="['checkbox'].includes(element.type)">
+                                    <div class="spacing">
+                                    <label>{{element.name}} </label>
+                                    <div *ngFor="let option of element.options">
+                                        <mat-checkbox
+                                        [name]="option.label"
+                                        [value]="option.value"
+                                        [checked]="option.checked"
+                                        (change)="onChange($event, element.type, element.label, option.checked)" 
+                                        [formArrayName]="element.label" 
+                                        >
+                                        <label for="element.label">
                                             {{option.label}}
-                                        </mat-option>
-                                    </mat-select>
-                                </mat-form-field>
-                            </div>
-                            </div>
-                            <div *ngIf="['radio'].includes(element.type)">
-                                <div class="textbox">
-                                    <label id="radio-label">{{element.name}} </label>
-                                    <mat-radio-group aria-labelledby="radio-label">
-                                        <div *ngFor="let option of element.options">
-                                            <mat-radio-button
-                                            ngDefaultControl
-                                            class="radio-button-attributes"
-                                            [name]="element.label"
-                                            (change)="onChange($event, element.type)"
-                                            [formControlName]="element.label" 
-                                            [value]="option.label" 
-                                            >
-                                            {{option.label}}
-                                            </mat-radio-button>
-                                        </div>
-                                    </mat-radio-group>
+                                        </label>
+                                        </mat-checkbox>
+                                    </div>
+                                </div>
                                 </div>
                             </div>
-                            <div *ngIf="['checkbox'].includes(element.type)">
-                                <div class="my-checkbox">
-                                <label>{{element.name}} </label>
-                                <div *ngFor="let option of element.options">
-                                    <mat-checkbox
-                                    [name]="option.label"
-                                    [value]="option.value"
-                                    [checked]="option.checked"
-                                    (change)="onChange($event, element.type, element.label, option.checked)" 
-                                    [formArrayName]="element.label" 
-                                    >
-                                    <label for="element.label">
-                                        {{option.label}}
-                                    </label>
-                                    </mat-checkbox>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                        <button class="submit-button mat-elevation-z8" mat-raised-button>Submit</button>
-                    </form>
-                </div> 
-            </mat-card-content>
-        </mat-card>
+                            <button class="submit-button mat-elevation-z8" mat-raised-button>Submit</button>
+                        </form>
+                </mat-card-content>
+            </mat-card>
+        </div>
     </div>
 </body>
 </html>
